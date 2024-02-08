@@ -1,32 +1,40 @@
-import { Logo } from '@/components/logo'
 import { Separator } from '@/components/ui/separator'
 import { NoteCard } from '@/components/note-card'
 import { NewNoteCard } from '@/components/new-note-card'
-
-const note = {
-  date: 2,
-  content: 'Hello World'
-}
+import { useNoteStore } from '@/store/use-note-store'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { Header } from '@/components/header'
+import { Fragment } from 'react'
+import { NoteSearch } from '@/components/note-search'
 
 export const App = () => {
+  const { notes, queryNoteSearch } = useNoteStore()
+  const [parent] = useAutoAnimate()
+
+  const filteredNotes =
+    queryNoteSearch !== ''
+      ? notes.filter(note =>
+          note.content.includes(queryNoteSearch.toLowerCase())
+        )
+      : notes
+
   return (
-    <div className="mx-auto my-12 max-w-6xl space-y-6 lowercase">
-      <Logo className="fill-lime-200" />
+    <Fragment>
+      <Header />
 
-      <form className="w-full">
-        <input
-          type="text"
-          placeholder="Busque em suas notas..."
-          className="w-full bg-transparent text-3xl font-bold tracking-tighter outline-none placeholder:text-foreground/40"
-        />
-      </form>
+      <div className="mx-auto my-4 max-w-6xl space-y-6 lowercase">
+        <NoteSearch />
 
-      <Separator />
+        <Separator />
 
-      <div className="grid auto-rows-[250px] grid-cols-3 gap-6">
-        <NewNoteCard />
-        <NoteCard note={note} />
+        <div ref={parent} className="grid auto-rows-[250px] grid-cols-3 gap-6">
+          <NewNoteCard />
+
+          {filteredNotes.map(note => (
+            <NoteCard key={note.id} note={note} />
+          ))}
+        </div>
       </div>
-    </div>
+    </Fragment>
   )
 }

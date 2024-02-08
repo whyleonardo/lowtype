@@ -3,27 +3,33 @@ import { X } from 'lucide-react'
 
 import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { Note } from '@/@types/note'
+import { useNoteStore } from '@/store/use-note-store'
 
 interface NoteCardProps {
-  note: {
-    date: number
-    content: string
-  }
+  note: Note
 }
 
 export const NoteCard = ({ note }: NoteCardProps) => {
+  const { removeNote } = useNoteStore()
+
   if (!note.content) return null
 
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <button className="relative flex flex-col gap-3 overflow-hidden rounded-md bg-stone-800 p-5 text-left outline-none transition hover:ring-2 hover:ring-stone-700 focus-visible:ring-2 focus-visible:ring-lime-300">
+        <button className="relative flex flex-col gap-3 overflow-hidden rounded-md bg-stone-800 p-5 text-left outline-none transition hover:ring-2 hover:ring-stone-700 focus-visible:ring-2 focus-visible:ring-indigo-300">
           <span className="text-sm font-medium">
-            {formatDistanceToNow(new Date(), { locale: ptBR, addSuffix: true })}
+            {formatDistanceToNow(note.createdAt, {
+              locale: ptBR,
+              addSuffix: true
+            })}
           </span>
           <p className="text-sm leading-6 text-stone-400">{note.content}</p>
 
-          <div className="pointer-events-none absolute inset-0 top-1/3 w-full bg-gradient-to-t from-stone-950/80 to-transparent" />
+          {note.content.length > 370 && (
+            <div className="pointer-events-none absolute inset-0 top-1/4 w-full bg-gradient-to-t from-stone-950 to-transparent" />
+          )}
         </button>
       </Dialog.Trigger>
 
@@ -47,6 +53,7 @@ export const NoteCard = ({ note }: NoteCardProps) => {
           </div>
 
           <button
+            onClick={() => removeNote(note.id)}
             type="button"
             className="group w-full bg-stone-900 py-4 text-center text-sm text-stone-300 outline-none transition hover:bg-stone-900/60"
           >

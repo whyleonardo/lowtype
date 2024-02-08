@@ -18,7 +18,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif']
+        sans: ['Inter', 'sans-serif'],
+        logo: ['Kadwa', 'serif']
       },
       colors: {
         border: 'hsl(var(--border))',
