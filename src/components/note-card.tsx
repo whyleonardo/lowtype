@@ -1,10 +1,10 @@
+import { Note } from '@/@types/note'
 import * as Dialog from '@radix-ui/react-dialog'
-import { X } from 'lucide-react'
+import { useNoteStore } from '@/store/use-note-store'
 
+import { X } from 'lucide-react'
 import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
-import { Note } from '@/@types/note'
-import { useNoteStore } from '@/store/use-note-store'
 
 interface NoteCardProps {
   note: Note

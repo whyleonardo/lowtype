@@ -1,10 +1,12 @@
+import { ChangeEvent, FormEvent, Fragment, useEffect, useState } from 'react'
+
 import { randomSentences as sentences } from '@/constants/random-sentences'
 import * as Dialog from '@radix-ui/react-dialog'
+import { useNoteStore } from '@/store/use-note-store'
+
 import { X } from 'lucide-react'
-import { ChangeEvent, FormEvent, Fragment, useEffect, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 import { toast } from 'sonner'
-import { useNoteStore } from '@/store/use-note-store'
 
 let speechRecognition: SpeechRecognition | null = null
 

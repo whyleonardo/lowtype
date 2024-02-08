@@ -1,5 +1,6 @@
-import { useNoteStore } from '@/store/use-note-store'
 import { ChangeEvent } from 'react'
+
+import { useNoteStore } from '@/store/use-note-store'
 
 export const NoteSearch = () => {
   const { setQueryNoteSearch } = useNoteStore()
