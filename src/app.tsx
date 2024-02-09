@@ -22,12 +22,15 @@ export const App = () => {
     <Fragment>
       <Header />
 
-      <div className="mx-auto my-4 max-w-6xl space-y-6 lowercase">
+      <div className="mx-auto my-4 max-w-6xl space-y-6 px-8 lowercase md:px-0">
         <NoteSearch />
 
         <Separator />
 
-        <div ref={parent} className="grid auto-rows-[250px] grid-cols-3 gap-6">
+        <div
+          ref={parent}
+          className="grid auto-rows-[250px] grid-cols-1 gap-6 md:grid-cols-3"
+        >
           <NewNoteCard />
 
           {filteredNotes.map(note => (

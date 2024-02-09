@@ -16,7 +16,7 @@ export const NewNoteCard = () => {
   const [recordingContent, setRecordingContent] = useState('')
   const [debouncedNoteContent, setDebouncedNoteContent] = useDebounceValue(
     '',
-    500
+    150
   )
 
   const [randomSentence, setRandomSentence] = useState<string>(
