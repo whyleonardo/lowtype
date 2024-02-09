@@ -163,16 +163,16 @@ export const NewNoteCard = () => {
                 ></textarea>
               ) : (
                 <Fragment>
-                  <p className="text-sm leading-6 text-stone-400">
+                  <p className="text-balance text-sm leading-6 text-stone-400">
                     comece{' '}
                     <button
                       type="button"
                       onClick={handleStartRecording}
                       className="rounded-sm font-medium text-indigo-300 outline-none hover:underline focus-visible:ring-1 focus-visible:ring-stone-700"
                     >
-                      gravando
+                      gravando uma nota em áudio
                     </button>{' '}
-                    uma nota em áudio ou se preferir{' '}
+                    ou se preferir{' '}
                     <button
                       type="button"
                       onClick={handleStartEditor}
