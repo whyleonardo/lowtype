@@ -36,7 +36,7 @@ export const NoteCard = ({ note }: NoteCardProps) => {
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/50" />
 
-        <Dialog.Content className="fixed left-1/2 top-1/2 z-10  flex h-[60vh] w-full max-w-[340px] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-md bg-stone-800 outline-none md:max-w-[640px]">
+        <Dialog.Content className="fixed left-1/2 top-1/2 z-10 flex h-[60vh] w-11/12 -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-md bg-stone-800 outline-none md:max-w-[640px]">
           <Dialog.Close className="absolute right-5 top-5" asChild>
             <X className="size-5 cursor-pointer text-foreground transition hover:text-muted-foreground" />
           </Dialog.Close>
